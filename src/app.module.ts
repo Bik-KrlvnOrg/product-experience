@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { config } from './libs/config/app.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigFactory } from './libs/config/typeorm-factory.config';
+import { ExperienceModule } from './experience/experience.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -18,6 +19,7 @@ const ENV = process.env.NODE_ENV;
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigFactory,
     }),
+    ExperienceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
