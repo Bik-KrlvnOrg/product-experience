@@ -9,6 +9,7 @@ import { CommandHandlers } from './command/handler';
 import { QueryHandlers } from './query/handler';
 import { ExistEntityService } from '../../libs/service';
 import { ModuleRef } from '@nestjs/core';
+import { ExperienceProjection } from './projection/experience.projection';
 
 @Module({
   imports: [CqrsModule, TypeOrmModule.forFeature([ExperienceRepository])],
@@ -19,6 +20,7 @@ import { ModuleRef } from '@nestjs/core';
     ...EventHandlers,
     ...QueryHandlers,
     ExistEntityService,
+    ExperienceProjection,
   ],
 })
 export class ExperienceModule implements OnModuleInit {
