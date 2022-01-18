@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ExperienceController } from './experience.controller';
-import { ExperienceService } from './experience.service';
+import { ExperienceService } from '../service/experience.service';
 
 describe('ExperienceController', () => {
   let controller: ExperienceController;
