@@ -1,0 +1,12 @@
+GET http://localhost:8888/experiences
+Accept: application/json
+
+###
+POST http://localhost:8888/experiences
+Content-Type: application/json
+
+{
+  "name": "Flying"
+}
+
+###

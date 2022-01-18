@@ -6,6 +6,7 @@ import { config } from './libs/config/app.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigFactory } from './libs/config/typeorm-factory.config';
 import { ExperienceModule } from './module/experience/experience.module';
+import { LibsModule } from './libs/libs.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -20,6 +21,7 @@ const ENV = process.env.NODE_ENV;
       useClass: TypeOrmConfigFactory,
     }),
     ExperienceModule,
+    LibsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

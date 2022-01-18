@@ -8,10 +8,10 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ExperienceService } from '../service/experience.service';
-import { CreateExperienceDto } from '../dto/create-experience.dto';
-import { UpdateExperienceDto } from '../dto/update-experience.dto';
+import { CreateExperienceDto } from '../dto';
+import { UpdateExperienceDto } from '../dto';
 
-@Controller('experience')
+@Controller('experiences')
 export class ExperienceController {
   constructor(private readonly experienceService: ExperienceService) {}
 
@@ -27,7 +27,7 @@ export class ExperienceController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.experienceService.findOne(+id);
+    return this.experienceService.findOne(id);
   }
 
   @Patch(':id')
@@ -35,11 +35,11 @@ export class ExperienceController {
     @Param('id') id: string,
     @Body() updateExperienceDto: UpdateExperienceDto,
   ) {
-    return this.experienceService.update(+id, updateExperienceDto);
+    return this.experienceService.update(id, updateExperienceDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.experienceService.remove(+id);
+    return this.experienceService.remove(id);
   }
 }

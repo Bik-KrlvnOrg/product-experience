@@ -5,7 +5,7 @@ export class Experience extends AggregateRoot {
   [id: string]: any;
   data: any;
 
-  constructor(private readonly id?: string) {
+  constructor(public readonly id?: string) {
     super();
   }
 

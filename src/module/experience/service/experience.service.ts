@@ -1,31 +1,34 @@
 import { Injectable } from '@nestjs/common';
-import { CreateExperienceDto } from '../dto/create-experience.dto';
-import { UpdateExperienceDto } from '../dto/update-experience.dto';
-import { CommandBus } from '@nestjs/cqrs';
-import { CreateExperienceCommand } from '../command/impl/create-experience.command';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { GetExperienceQuery, GetExperiencesQuery } from '../query/impl';
+import { CreateExperienceDto, UpdateExperienceDto } from '../dto';
+import { CreateExperienceCommand } from '../command/impl';
 
 @Injectable()
 export class ExperienceService {
-  constructor(private readonly commandBus: CommandBus) {}
+  constructor(
+    private readonly commandBus: CommandBus,
+    private readonly queryBus: QueryBus,
+  ) {}
   async create(createExperienceDto: CreateExperienceDto) {
     return await this.commandBus.execute(
       new CreateExperienceCommand(createExperienceDto),
     );
   }
 
-  findAll() {
-    return `This action returns all experience`;
+  async findAll(data?: any) {
+    return await this.queryBus.execute(new GetExperiencesQuery(data));
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} experience`;
+  async findOne(id: string) {
+    return await this.queryBus.execute(new GetExperienceQuery(id));
   }
 
-  update(id: number, updateExperienceDto: UpdateExperienceDto) {
+  update(id: string, updateExperienceDto: UpdateExperienceDto) {
     return `This action updates a #${id} experience`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} experience`;
   }
 }

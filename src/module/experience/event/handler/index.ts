@@ -1,3 +1,3 @@
-import { ExperienceCreatedEvent } from '../impl/experience.created.event';
+import { ExperienceCreatedHandler } from './experience.created.handler';
 
-export const EventHandlers = [ExperienceCreatedEvent];
+export const EventHandlers = [ExperienceCreatedHandler];

@@ -6,7 +6,9 @@ import { ExperienceCreatedEvent } from '../impl/experience.created.event';
 export class ExperienceCreatedHandler
   implements IEventHandler<ExperienceCreatedEvent>
 {
+  logger = new Logger(this.constructor.name);
+
   handle(event: ExperienceCreatedEvent): any {
-    Logger.log(event, 'ExperienceCreatedEvent');
+    this.logger.log(event, 'ExperienceCreatedEvent');
   }
 }
