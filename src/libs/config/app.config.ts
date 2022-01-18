@@ -1,0 +1,25 @@
+export const config = () => ({
+  env: process.env.NODE_ENV,
+  port: process.env.PORT,
+  database: {
+    name: 'default',
+    type: process.env.DIALECT,
+    database: process.env.DATABASE_NAME,
+    username: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    host: process.env.DATABASE_HOST,
+    port: parseInt(process.env.DATABASE_PORT, 10),
+    synchronize: JSON.parse(process.env.DB_SYNC),
+    entities: ['dist/domain/**/*.entity.js'],
+    logging: JSON.parse(process.env.DB_LOG),
+    dropSchema: JSON.parse(process.env.DB_DROP),
+  },
+  test_database: {
+    type: 'sqlite',
+    database: process.env.DATABASE_NAME,
+    entities: ['dist/domain/**/*.entity.js'],
+    synchronize: JSON.parse(process.env.DB_SYNC),
+    logging: JSON.parse(process.env.DB_LOG),
+    dropSchema: JSON.parse(process.env.DB_DROP),
+  },
+});
