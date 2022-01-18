@@ -10,6 +10,7 @@ import { ExperienceRepository } from '../../domain/repository';
 import { ExistEntityService } from '../../../../libs/service';
 import { ExperienceEntity } from '../../../../entities';
 import { Experience } from '../../domain/model';
+import { Transactional } from 'typeorm-transactional-cls-hooked';
 
 @CommandHandler(CreateExperienceCommand)
 export class CreateExperienceHandler
@@ -24,6 +25,7 @@ export class CreateExperienceHandler
 
   logger = new Logger(this.constructor.name);
 
+  @Transactional()
   async execute(command: CreateExperienceCommand): Promise<any> {
     this.logger.log(command.experienceDto, 'CreateExperienceCommand');
     const { experienceDto } = command;
