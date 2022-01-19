@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { ExperienceService } from '../service/experience.service';
 import { CreateExperienceDto } from '../dto';
@@ -23,6 +24,11 @@ export class ExperienceController {
   @Get()
   findAll() {
     return this.experienceService.findAll();
+  }
+
+  @Get('location')
+  findAllWithLocation() {
+    return this.experienceService.findAllWithLocation();
   }
 
   @Get(':id')

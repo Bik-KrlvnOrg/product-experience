@@ -5,6 +5,7 @@ import { CreateExperienceDto, UpdateExperienceDto } from '../dto';
 import { CreateExperienceCommand } from '../command/impl';
 import { ExistEntityService } from '../../../libs/service';
 import { ExperienceEntity } from '../../../entities';
+import { GetExperiencesWithLocationQuery } from '../query/impl/get-experiences-with-location.query';
 
 @Injectable()
 export class ExperienceService {
@@ -25,6 +26,12 @@ export class ExperienceService {
 
   async findAll(data?: any) {
     return await this.queryBus.execute(new GetExperiencesQuery(data));
+  }
+
+  async findAllWithLocation(data?: any) {
+    return await this.queryBus.execute(
+      new GetExperiencesWithLocationQuery(data),
+    );
   }
 
   async findOne(id: string) {

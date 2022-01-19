@@ -1,4 +1,4 @@
-GET http://localhost:8888/experiences
+GET http://localhost:8888/experiences/location
 Accept: application/json
 
 ###
@@ -6,7 +6,12 @@ POST http://localhost:8888/experiences
 Content-Type: application/json
 
 {
-  "name": "Flying"
+  "name": "Flying",
+  "locations": [
+    {
+      "name": "Berlin"
+    }
+  ]
 }
 
 ###
