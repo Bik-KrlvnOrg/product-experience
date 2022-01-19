@@ -8,7 +8,6 @@ export class TimeslotEntity extends AbstractEntity {
   @Column()
   name: string;
   @OneToOne(() => PriceEntity, (price) => price.id, {
-    cascade: true,
     eager: true,
   })
   @JoinColumn({ name: 'price_id' })

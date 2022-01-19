@@ -6,6 +6,10 @@ import { LocationEntity } from './location.entity';
 export class ExperienceEntity extends AbstractEntity {
   @Column()
   name: string;
+  @Column()
+  duration: number;
+  @Column('text', { nullable: true })
+  description: string;
   @OneToMany(() => LocationEntity, (location) => location.experience, {
     cascade: true,
   })

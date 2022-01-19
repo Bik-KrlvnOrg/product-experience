@@ -11,20 +11,34 @@ import { ModuleRef } from '@nestjs/core';
 import { ExperienceProjection } from './projection/experience.projection';
 import { ExperienceCommandController } from './controller';
 import { ExperienceQueryController } from './controller';
+import { PriceRepository } from './domain/repository/price.repository';
+import { PriceProjection } from './projection/price.projection';
+import { PriceService } from './service/price.service';
+import { PriceCommandController } from './controller/price-command.controller';
 
 @Module({
   imports: [
     CqrsModule,
-    TypeOrmModule.forFeature([ExperienceRepository, LocationRepository]),
+    TypeOrmModule.forFeature([
+      ExperienceRepository,
+      LocationRepository,
+      PriceRepository,
+    ]),
   ],
-  controllers: [ExperienceCommandController, ExperienceQueryController],
+  controllers: [
+    ExperienceCommandController,
+    PriceCommandController,
+    ExperienceQueryController,
+  ],
   providers: [
     ExperienceService,
     ...CommandHandlers,
     ...EventHandlers,
     ...QueryHandlers,
     ExistEntityService,
+    PriceService,
     ExperienceProjection,
+    PriceProjection,
   ],
 })
 export class ExperienceModule implements OnModuleInit {

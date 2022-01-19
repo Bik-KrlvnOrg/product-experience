@@ -1,3 +1,4 @@
+###
 GET http://localhost:8888/experiences/category
 Accept: application/json
 
@@ -6,7 +7,7 @@ GET http://localhost:8888/experiences
 Accept: application/json
 
 ###
-GET http://localhost:8888/experiences/location/19544cd0-9cf7-4fee-a934-36b4bb01e2df
+GET http://localhost:8888/experiences/location/3d594ac7-1d3a-45b8-bbe9-2f8b8b089909
 Accept: application/json
 
 ###
@@ -15,6 +16,7 @@ Content-Type: application/json
 
 {
   "name": "Alpaca walks",
+  "duration": 1,
   "locations": [
     {
       "name": "Munich",
@@ -44,3 +46,14 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://localhost:8888/prices/assign-to-timeslot
+Content-Type: application/json
+
+{
+  "name": "20EUR",
+  "rate": 20,
+  "timeslot": {
+    "id": "a4241912-bd9b-463d-9135-6184a4773cea"
+  }
+}
