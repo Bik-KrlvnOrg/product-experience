@@ -1,17 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ExperienceController } from './experience.controller';
 import { ExperienceService } from '../service/experience.service';
+import { ExperienceCommandController } from './experience-command.controller';
 
 describe('ExperienceController', () => {
-  let controller: ExperienceController;
+  let controller: ExperienceCommandController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ExperienceController],
+      controllers: [ExperienceCommandController],
       providers: [ExperienceService],
     }).compile();
 
-    controller = module.get<ExperienceController>(ExperienceController);
+    controller = module.get<ExperienceCommandController>(
+      ExperienceCommandController,
+    );
   });
 
   it('should be defined', () => {

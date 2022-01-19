@@ -13,13 +13,8 @@ import { CreateExperienceDto } from '../dto';
 import { UpdateExperienceDto } from '../dto';
 
 @Controller('experiences')
-export class ExperienceController {
+export class ExperienceQueryController {
   constructor(private readonly experienceService: ExperienceService) {}
-
-  @Post()
-  create(@Body() createExperienceDto: CreateExperienceDto) {
-    return this.experienceService.create(createExperienceDto);
-  }
 
   @Get()
   findAll() {
@@ -37,25 +32,12 @@ export class ExperienceController {
   }
 
   @Get('locations')
-  findLocation() {
+  findLocations() {
     return this.experienceService.findLocations();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.experienceService.findOne(id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateExperienceDto: UpdateExperienceDto,
-  ) {
-    return this.experienceService.update(id, updateExperienceDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.experienceService.remove(id);
   }
 }
