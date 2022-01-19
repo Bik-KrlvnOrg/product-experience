@@ -1,6 +1,7 @@
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { Logger } from '@nestjs/common';
 import { ExperienceCreatedEvent } from '../impl/experience.created.event';
+import { instanceToPlain } from 'class-transformer';
 
 @EventsHandler(ExperienceCreatedEvent)
 export class ExperienceCreatedHandler
@@ -9,6 +10,6 @@ export class ExperienceCreatedHandler
   logger = new Logger(this.constructor.name);
 
   handle(event: ExperienceCreatedEvent): any {
-    this.logger.log(event, 'ExperienceCreatedEvent');
+    this.logger.log(instanceToPlain(event), 'ExperienceCreatedEvent');
   }
 }
