@@ -11,6 +11,8 @@ export class LocationEntity extends AbstractEntity {
   @JoinColumn({ name: 'experience_id' })
   experience: ExperienceEntity;
 
-  @OneToMany(() => TimeslotEntity, (timeslots) => timeslots)
+  @OneToMany(() => TimeslotEntity, (timeslot) => timeslot.location, {
+    cascade: true,
+  })
   timeslots: TimeslotEntity[];
 }

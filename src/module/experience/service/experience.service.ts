@@ -6,6 +6,8 @@ import { CreateExperienceCommand } from '../command/impl';
 import { ExistEntityService } from '../../../libs/service';
 import { ExperienceEntity } from '../../../entities';
 import { GetExperiencesWithLocationQuery } from '../query/impl/get-experiences-with-location.query';
+import { GetLocationWithTimeslotsQuery } from '../query/impl/get-location-with-timeslots.query';
+import { GetLocationsQuery } from '../query/impl/get-locations.query';
 
 @Injectable()
 export class ExperienceService {
@@ -32,6 +34,14 @@ export class ExperienceService {
     return await this.queryBus.execute(
       new GetExperiencesWithLocationQuery(data),
     );
+  }
+
+  async findLocationWithTimeslots(data?: any) {
+    return await this.queryBus.execute(new GetLocationWithTimeslotsQuery(data));
+  }
+
+  async findLocations(data?: any) {
+    return await this.queryBus.execute(new GetLocationsQuery(data));
   }
 
   async findOne(id: string) {

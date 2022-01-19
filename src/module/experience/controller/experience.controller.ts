@@ -23,12 +23,22 @@ export class ExperienceController {
 
   @Get()
   findAll() {
+    return this.experienceService.findAllWithLocation();
+  }
+
+  @Get('category')
+  findAllExperienceWithLocation() {
     return this.experienceService.findAll();
   }
 
-  @Get('location')
-  findAllWithLocation() {
-    return this.experienceService.findAllWithLocation();
+  @Get('location/:id')
+  findLocationWithTimeslots(@Param('id') locationID: string) {
+    return this.experienceService.findLocationWithTimeslots(locationID);
+  }
+
+  @Get('locations')
+  findLocation() {
+    return this.experienceService.findLocations();
   }
 
   @Get(':id')

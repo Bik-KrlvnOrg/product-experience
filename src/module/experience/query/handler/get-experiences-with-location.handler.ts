@@ -12,6 +12,6 @@ export class GetExperiencesWithLocationHandler
   constructor(private readonly repository: ExperienceRepository) {}
   async execute(query: GetExperiencesWithLocationQuery): Promise<any> {
     this.logger.log(instanceToPlain(query), 'GetExperiencesWithTimeslotsQuery');
-    return this.repository.find({});
+    return this.repository.find({ relations: ['locations'] });
   }
 }

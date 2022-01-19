@@ -1,4 +1,12 @@
-GET http://localhost:8888/experiences/location
+GET http://localhost:8888/experiences/category
+Accept: application/json
+
+###
+GET http://localhost:8888/experiences
+Accept: application/json
+
+###
+GET http://localhost:8888/experiences/location/19544cd0-9cf7-4fee-a934-36b4bb01e2df
 Accept: application/json
 
 ###
@@ -6,10 +14,31 @@ POST http://localhost:8888/experiences
 Content-Type: application/json
 
 {
-  "name": "Flying",
+  "name": "Alpaca walks",
   "locations": [
     {
-      "name": "Berlin"
+      "name": "Munich",
+      "timeslots": [
+        {
+          "name": "Mondays at 13:00",
+          "price": {
+            "name": "10EUR",
+            "rate": 10
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hamburg",
+      "timeslots": [
+        {
+          "name": "Saturdays at 11:00",
+          "price": {
+            "name": "20EUR",
+            "rate": 20
+          }
+        }
+      ]
     }
   ]
 }

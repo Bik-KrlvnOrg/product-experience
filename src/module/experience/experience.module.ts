@@ -3,7 +3,7 @@ import { ExperienceService } from './service/experience.service';
 import { ExperienceController } from './controller/experience.controller';
 import { CommandBus, CqrsModule, EventBus } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ExperienceRepository } from './domain/repository';
+import { ExperienceRepository, LocationRepository } from './domain/repository';
 import { EventHandlers } from './event/handler';
 import { CommandHandlers } from './command/handler';
 import { QueryHandlers } from './query/handler';
@@ -12,7 +12,10 @@ import { ModuleRef } from '@nestjs/core';
 import { ExperienceProjection } from './projection/experience.projection';
 
 @Module({
-  imports: [CqrsModule, TypeOrmModule.forFeature([ExperienceRepository])],
+  imports: [
+    CqrsModule,
+    TypeOrmModule.forFeature([ExperienceRepository, LocationRepository]),
+  ],
   controllers: [ExperienceController],
   providers: [
     ExperienceService,
