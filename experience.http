@@ -7,7 +7,7 @@ GET http://localhost:8888/experiences
 Accept: application/json
 
 ###
-GET http://localhost:8888/experiences/location/3d594ac7-1d3a-45b8-bbe9-2f8b8b089909
+GET http://localhost:8888/experiences/location/a166e450-a8a7-4b1e-b140-02b36370a1d6
 Accept: application/json
 
 ###
@@ -54,6 +54,20 @@ Content-Type: application/json
   "name": "20EUR",
   "rate": 20,
   "timeslot": {
-    "id": "a4241912-bd9b-463d-9135-6184a4773cea"
+    "id": "274839e3-87a0-4452-a0bb-6b9715f68793"
   }
 }
+
+###
+POST http://localhost:8888/vouchers
+Content-Type: application/json
+
+{
+ "totalAmount": 45,
+  "customer": {
+    "name": "John Doe",
+    "address": "Jose street 2332"
+  }
+
+}
+

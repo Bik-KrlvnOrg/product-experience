@@ -7,6 +7,8 @@ import { TimeslotEntity } from './timeslot.entity';
 export class LocationEntity extends AbstractEntity {
   @Column()
   name: string;
+  @Column()
+  limit: number;
   @ManyToOne(() => ExperienceEntity, (experience) => experience.locations)
   @JoinColumn({ name: 'experience_id' })
   experience: ExperienceEntity;

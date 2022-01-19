@@ -1,6 +1,6 @@
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { Logger } from '@nestjs/common';
-import { ExperienceCreatedEvent } from '../impl/experience.created.event';
+import { ExperienceCreatedEvent } from '../impl';
 import { instanceToPlain } from 'class-transformer';
 
 @EventsHandler(ExperienceCreatedEvent)
