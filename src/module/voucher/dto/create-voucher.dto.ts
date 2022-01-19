@@ -7,7 +7,7 @@ interface Customer {
 interface Appointment {
   experienceID: string;
   locationID: string;
-  timeslotID: string;
+  timeslot: { id: string };
 }
 export class CreateVoucherDto {
   @IsNotEmpty()

@@ -1,6 +1,7 @@
 import { AbstractEntity } from './abstract-entity';
 import { Column, Entity, OneToOne } from 'typeorm';
 import { VoucherEntity } from './voucher.entity';
+import { TimeslotEntity } from './timeslot.entity';
 
 @Entity({ name: 'appointment' })
 export class AppointmentEntity extends AbstractEntity {
@@ -8,10 +9,12 @@ export class AppointmentEntity extends AbstractEntity {
   experienceID: string;
   @Column('uuid')
   locationID: string;
-  @Column('uuid')
-  timeslotID: string;
   @OneToOne(() => VoucherEntity, (voucher) => voucher.appointment, {
     cascade: true,
   })
   voucher: VoucherEntity;
+  @OneToOne(() => TimeslotEntity, (timeslot) => timeslot.appointment, {
+    cascade: true,
+  })
+  timeslot: TimeslotEntity;
 }
