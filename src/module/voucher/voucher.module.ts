@@ -12,11 +12,13 @@ import { BookingService } from './service/booking.service';
 import { AppointmentRepository, VoucherRepository } from './domain/repository';
 import { BookingCommandController } from './controller/booking-command.controller';
 import { VoucherSaga } from './saga/voucher.saga';
+import { ExperienceModule } from '../experience/experience.module';
 
 @Module({
   imports: [
     CqrsModule,
     TypeOrmModule.forFeature([VoucherRepository, AppointmentRepository]),
+    ExperienceModule,
   ],
   controllers: [
     VoucherCommandController,

@@ -7,7 +7,7 @@ import { TimeslotEntity } from './timeslot.entity';
 export class LocationEntity extends AbstractEntity {
   @Column()
   name: string;
-  @Column()
+  @Column({ default: 1 })
   limit: number;
   @ManyToOne(() => ExperienceEntity, (experience) => experience.locations)
   @JoinColumn({ name: 'experience_id' })
@@ -17,4 +17,8 @@ export class LocationEntity extends AbstractEntity {
     cascade: true,
   })
   timeslots: TimeslotEntity[];
+
+  isSlotAvailable() {
+    return this.limit < this.timeslots.length;
+  }
 }

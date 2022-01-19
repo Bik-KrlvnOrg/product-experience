@@ -40,6 +40,7 @@ import { PriceCommandController } from './controller/price-command.controller';
     ExperienceProjection,
     PriceProjection,
   ],
+  exports: [ExperienceService],
 })
 export class ExperienceModule implements OnModuleInit {
   constructor(

@@ -1,5 +1,5 @@
 import { AbstractEntity } from './abstract-entity';
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { Column, Entity, OneToOne } from 'typeorm';
 import { VoucherEntity } from './voucher.entity';
 
 @Entity({ name: 'appointment' })
