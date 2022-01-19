@@ -67,6 +67,11 @@ Content-Type: application/json
   "customer": {
     "name": "John Doe",
     "address": "Jose street 2332"
+  },
+  "appointment": {
+    "experienceID": "274839e3-87a0-4452-a0bb-6b9715f68793",
+    "locationID": "274839e3-87a0-4452-a0bb-6b9715f68793",
+    "timeslotID": "274839e3-87a0-4452-a0bb-6b9715f68793"
   }
 
 }

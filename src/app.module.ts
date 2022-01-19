@@ -7,7 +7,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigFactory } from './libs/config/typeorm-factory.config';
 import { ExperienceModule } from './module/experience/experience.module';
 import { LibsModule } from './libs/libs.module';
-import { BookingModule } from './module/booking/booking.module';
 import { VoucherModule } from './module/voucher/voucher.module';
 
 const ENV = process.env.NODE_ENV;
@@ -24,7 +23,6 @@ const ENV = process.env.NODE_ENV;
     }),
     ExperienceModule,
     LibsModule,
-    BookingModule,
     VoucherModule,
   ],
   controllers: [AppController],

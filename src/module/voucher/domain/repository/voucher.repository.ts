@@ -1,5 +1,5 @@
 import { EntityRepository } from 'typeorm';
-import { VoucherEntity } from '../../../entities';
+import { VoucherEntity } from '../../../../entities';
 import { BaseRepository } from 'typeorm-transactional-cls-hooked';
 
 @EntityRepository(VoucherEntity)

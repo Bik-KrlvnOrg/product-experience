@@ -1,6 +1,7 @@
 import { AbstractEntity } from './abstract-entity';
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
 import { CustomerEntity } from './customer.entity';
+import { AppointmentEntity } from './appointment.entity';
 
 enum Status {
   ACTIVE = 'ACTIVE',
@@ -18,4 +19,10 @@ export class VoucherEntity extends AbstractEntity {
   })
   @JoinColumn({ name: 'customer_id' })
   customer: CustomerEntity;
+
+  @OneToOne(() => AppointmentEntity, (appointment) => appointment.id, {
+    eager: true,
+  })
+  @JoinColumn({ name: 'appointment_id' })
+  appointment: AppointmentEntity;
 }

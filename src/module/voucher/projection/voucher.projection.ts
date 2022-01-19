@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { VoucherRepository } from '../domain/voucher.repository';
+import { VoucherRepository } from '../domain/repository';
 import { CreateVoucherDto } from '../dto/create-voucher.dto';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { Voucher } from '../domain/Voucher';
@@ -13,7 +13,7 @@ export class VoucherProjection {
     const entity = this.repository.create(input);
     const save = await this.repository.save(entity);
     const voucher = new Voucher();
-    voucher.setData({ voucher: save, input });
+    voucher.setData(save);
     voucher.createVoucher();
     return voucher;
   }
