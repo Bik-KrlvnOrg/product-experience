@@ -25,9 +25,12 @@ export class TimeslotEntity extends AbstractEntity {
   @JoinColumn({ name: 'location_id' })
   location: LocationEntity;
 
-  @OneToOne(() => AppointmentEntity, (appointment) => appointment.id, {
+  @OneToMany(() => AppointmentEntity, (appointment) => appointment.timeslot, {
     eager: true,
   })
-  @JoinColumn({ name: 'appointment_id' })
-  appointment: AppointmentEntity;
+  appointments: AppointmentEntity[];
+
+  isSlotAvailable(limit: number): boolean {
+    return this.appointments.length < limit;
+  }
 }

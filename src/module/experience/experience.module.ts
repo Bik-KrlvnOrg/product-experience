@@ -1,20 +1,24 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ExperienceService } from './service/experience.service';
-import { CommandBus, CqrsModule, EventBus } from '@nestjs/cqrs';
+import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ExperienceRepository, LocationRepository } from './domain/repository';
 import { EventHandlers } from './event/handler';
 import { CommandHandlers } from './command/handler';
 import { QueryHandlers } from './query/handler';
 import { ExistEntityService } from '../../libs/service';
-import { ModuleRef } from '@nestjs/core';
 import { ExperienceProjection } from './projection/experience.projection';
-import { ExperienceCommandController } from './controller';
-import { ExperienceQueryController } from './controller';
+import {
+  ExperienceCommandController,
+  ExperienceQueryController,
+} from './controller';
 import { PriceRepository } from './domain/repository/price.repository';
 import { PriceProjection } from './projection/price.projection';
 import { PriceService } from './service/price.service';
 import { PriceCommandController } from './controller/price-command.controller';
+import { TimeslotService } from './service/timeslot.service';
+import { LocationService } from './service/location.service';
+import { TimeslotRepository } from './domain/repository/timeslot.repository';
 
 @Module({
   imports: [
@@ -22,6 +26,7 @@ import { PriceCommandController } from './controller/price-command.controller';
     TypeOrmModule.forFeature([
       ExperienceRepository,
       LocationRepository,
+      TimeslotRepository,
       PriceRepository,
     ]),
   ],
@@ -39,18 +44,9 @@ import { PriceCommandController } from './controller/price-command.controller';
     PriceService,
     ExperienceProjection,
     PriceProjection,
+    TimeslotService,
+    LocationService,
   ],
-  exports: [ExperienceService],
+  exports: [ExperienceService, TimeslotService, LocationService],
 })
-export class ExperienceModule implements OnModuleInit {
-  constructor(
-    private readonly moduleRef: ModuleRef,
-    private readonly command$: CommandBus,
-    private readonly event$: EventBus,
-  ) {}
-
-  onModuleInit(): any {
-    this.event$.register(EventHandlers);
-    this.command$.register(CommandHandlers);
-  }
-}
+export class ExperienceModule {}

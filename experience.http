@@ -1,3 +1,4 @@
+###
 ### Create Experience
 POST http://localhost:8888/experiences
 Content-Type: application/json
@@ -86,7 +87,7 @@ Content-Type: application/json
 {
  "totalAmount": 45,
   "customer": {
-    "name": "John Doe",
+    "name": "Bosd Doe",
     "address": "Jose street 2332"
   },
   "appointment": {

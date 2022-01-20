@@ -40,6 +40,10 @@ export class ExperienceService {
     return await this.queryBus.execute(new GetLocationWithTimeslotsQuery(data));
   }
 
+  async findLocation(data?: any) {
+    return await this.queryBus.execute(new GetLocationWithTimeslotsQuery(data));
+  }
+
   async findLocations(data?: any) {
     return await this.queryBus.execute(new GetLocationsQuery(data));
   }

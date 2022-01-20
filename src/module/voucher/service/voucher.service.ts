@@ -16,9 +16,11 @@ export class VoucherService {
   async create(input: CreateVoucherDto) {
     const { appointment } = input;
     if (appointment && appointment.locationID) {
-      const availability = await this.bookingService.checkAvailability(
-        appointment.locationID,
-      );
+      const { locationID, timeslot } = appointment;
+      const availability = await this.bookingService.checkAvailability({
+        locationId: locationID,
+        timeslotId: timeslot.id,
+      });
       if (!availability)
         throw new TimeslotLimitException('sorry timeslot unavailable');
     }

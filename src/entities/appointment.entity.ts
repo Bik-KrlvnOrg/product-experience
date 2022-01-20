@@ -1,5 +1,5 @@
 import { AbstractEntity } from './abstract-entity';
-import { Column, Entity, OneToOne } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToOne } from 'typeorm';
 import { VoucherEntity } from './voucher.entity';
 import { TimeslotEntity } from './timeslot.entity';
 
@@ -13,7 +13,7 @@ export class AppointmentEntity extends AbstractEntity {
     cascade: true,
   })
   voucher: VoucherEntity;
-  @OneToOne(() => TimeslotEntity, (timeslot) => timeslot.appointment, {
+  @ManyToOne(() => TimeslotEntity, (timeslot) => timeslot.appointments, {
     cascade: true,
   })
   timeslot: TimeslotEntity;

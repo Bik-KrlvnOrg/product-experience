@@ -10,12 +10,13 @@ import {
 import { VoucherService } from '../service/voucher.service';
 import { CreateVoucherDto } from '../dto/create-voucher.dto';
 import { UpdateVoucherDto } from '../dto/update-voucher.dto';
+import { AppointmentRepository } from '../domain/repository';
 
 @Controller('bookings')
 export class BookingCommandController {
   constructor(private readonly voucherService: VoucherService) {}
 
-  @Post()
+  @Post('reschedule')
   create(@Body() createVoucherDto: CreateVoucherDto) {
     return this.voucherService.create(createVoucherDto);
   }

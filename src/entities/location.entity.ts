@@ -17,8 +17,4 @@ export class LocationEntity extends AbstractEntity {
     cascade: true,
   })
   timeslots: TimeslotEntity[];
-
-  isSlotAvailable() {
-    return this.timeslots.length < this.limit;
-  }
 }
